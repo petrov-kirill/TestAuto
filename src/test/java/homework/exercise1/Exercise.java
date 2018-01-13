@@ -16,13 +16,13 @@ public class Exercise {
 //    Create a new test
 
     @Test
-    public void userLoginAndElementsChecksTest() {
+    public void userLoginAndContentChecks() {
 
 //        Create driver
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 
-//        Open userLoginAndElementsChecksTest site by URL
+//        Open test site by URL
         driver.navigate().to("https://jdi-framework.github.io/tests");
 
 //        Assert Browser title
@@ -55,6 +55,11 @@ public class Exercise {
         for (WebElement element : texts) {
             assertTrue(element.isDisplayed());
         }
+        assertEquals(texts.get(0).getText(), "To include good practices\n" + "and ideas from successful\n" + "EPAM projec");
+        assertEquals(texts.get(1).getText(), "To be flexible and\n" + "customizable");
+        assertEquals(texts.get(2).getText(), "To be multiplatform");
+        assertEquals(texts.get(3).getText(), "Already have good base\n" + "(about 20 internal and\n" +
+                "some external projects),\n" + "wish to get more…");
 
 //        Assert that there are the main header and the text below it on the Home Page
         WebElement element = driver.findElement(By.className("main-content"));
