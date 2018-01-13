@@ -1,8 +1,6 @@
 package classwork.lesson1;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
@@ -18,7 +16,6 @@ public class Lesson {
     public void test() {
         WebDriver driver = new FirefoxDriver();
         driver.navigate().to("http://www.epam.com");
-
         assertEquals(driver.getTitle(), "EPAM | Software Product Development Services");
         driver.close();
     }
@@ -52,5 +49,16 @@ public class Lesson {
         driver.findElement(By.xpath("li[@name='button-name']"));
         driver.findElement(By.linkText("Contact Us"));
         driver.findElement(By.partialLinkText("Contact"));
+    }
+
+    @Test
+    public void test5() throws InterruptedException {
+        setProperty("webdriver.gecko.driver", "/home/kp/IdeaProjects/TestAuto/linux-drivers/geckodriver");
+        WebDriver driver = new FirefoxDriver();
+        driver.navigate().to("http://www.vk.com");
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("alert('tigga we made it!');");
+        Thread.sleep(5000);
+        driver.close();
     }
 }

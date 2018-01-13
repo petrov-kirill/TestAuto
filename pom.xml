@@ -41,7 +41,7 @@
 
                     <configuration>
                         <suiteXmlFiles>
-                            <suiteXmlFile>/Users/eprupetw6980/IdeaProjects/TestAuto/src/test/resources/testng3.xml</suiteXmlFile>
+                            <suiteXmlFile>testng3.xml</suiteXmlFile>
                         </suiteXmlFiles>
                     </configuration>
                 </plugin>
