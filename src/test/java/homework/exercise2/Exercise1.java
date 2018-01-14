@@ -4,8 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import static java.lang.System.setProperty;
 import static org.testng.Assert.assertTrue;
@@ -19,12 +18,13 @@ public class Exercise1 {
 
     private static final String CHROME_DRIVER_PATH = "linux-drivers/chromedriver";
 
-    @Test(threadPoolSize = 4, dataProvider = "provide")
+    @Test(threadPoolSize = 2, dataProvider = "provide")
     public void test(String text) {
         setProperty("webdriver.chrome.driver", CHROME_DRIVER_PATH);
         WebDriver driver = new ChromeDriver();
         driver.navigate().to("https://jdi-framework.github.io/tests/index.htm");
         WebElement element = driver.findElement(By.className("main-content"));
+
         assertTrue(element.isDisplayed());
         assertTrue(element.getText().contains(text));
         driver.close();
