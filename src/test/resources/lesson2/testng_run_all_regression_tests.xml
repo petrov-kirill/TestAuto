@@ -1,13 +1,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="AllSmokeTests">
-    <test name="AllSmokeTests">
+<suite name="AllRegressionTests">
+    <test name="AllRegressionTests">
         <groups>
             <run>
-                <include name="Smoke"/>
+                <include name="Regression"/>
             </run>
         </groups>
         <packages>
-            <package name="homework.exercise2"/>
+            <package name="homework.lesson2"/>
         </packages>
     </test>
 </suite>

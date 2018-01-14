@@ -2,7 +2,7 @@
 <suite name="ParallelDemo">
     <test name="Test" parallel="methods" thread-count="2">
         <classes>
-            <class name="homework.exercise2.Parallel"/>
+            <class name="homework.lesson2.Parallel"/>
         </classes>
     </test>
 </suite>

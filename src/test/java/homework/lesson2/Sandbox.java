@@ -1,4 +1,4 @@
-package homework.exercise2;
+package homework.lesson2;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;

@@ -1,4 +1,4 @@
-package homework.exercise2;
+package homework.lesson2;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -50,8 +50,8 @@ public class Exercise3 {
         }
     }
 
-    @Test()
-    public void test() {
+    @Test
+    public void testTitle() {
         driver.manage().window().maximize();
         driver.navigate().to("http://www.epam.com");
         assertEquals(driver.getTitle(), "EPAM | Software Product Development Services");

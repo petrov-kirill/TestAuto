@@ -1,9 +1,9 @@
-package homework.exercise2;
+package homework.lesson2;
 
 import org.testng.annotations.Test;
 
-@Test(groups = {"Smoke"})
-public class Exercise2_1 {
+@Test(groups = {"Smoke", "Regression"})
+public class Exercise2_3 {
 
 /*          1. Create 3 new test classes and place there from 2 up to 4 tests (copy your already existed tests).
             2. Tests from the first class are included to group “Smoke”
@@ -13,15 +13,15 @@ public class Exercise2_1 {
 
 
     public void simpleTest1() {
-        System.out.println("simple test #1, group = Smoke");
+        System.out.println("simple test #1, groups = Smoke, Regression");
     }
 
     public void simpleTest2() {
-        System.out.println("simple test #2, group = Smoke");
+        System.out.println("simple test #2, groups = Smoke, Regression");
     }
 
     public void simpleTest3() {
-        System.out.println("simple test #3, group = Smoke");
+        System.out.println("simple test #3, groups = Smoke, Regression");
     }
 
 }

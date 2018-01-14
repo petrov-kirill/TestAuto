@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Exercise3Test" verbose="1">
+    <test name="Exercise3Test">
+        <classes>
+            <class name="homework.lesson2.Exercise3"/>
+        </classes>
+    </test>
+</suite>
