@@ -2,7 +2,6 @@ package homework.homework2;
 
 import org.testng.annotations.Test;
 
-@Test(groups = {"Regression"})
 public class Exercise2_2 {
 
 /*          1. Create 3 new test classes and place there from 2 up to 4 tests (copy your already existed tests).
@@ -12,14 +11,17 @@ public class Exercise2_2 {
             5. Create two TestNg config files, the first one runs all “Smoke” test, the second runs “Regression”.*/
 
 
+    @Test(groups = {"Regression"})
     public void simpleTest1() {
         System.out.println("simple test #1, group = Regression");
     }
 
+    @Test(groups = {"Regression"})
     public void simpleTest2() {
         System.out.println("simple test #2, group = Regression");
     }
 
+    @Test(groups = {"Regression"})
     public void simpleTest3() {
         System.out.println("simple test #3, group = Regression");
     }

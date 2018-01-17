@@ -1,6 +1,6 @@
 package homework.homework3;
 
-import org.openqa.selenium.By;
+import enums.IndexPageTextsEnum;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
+import static enums.IndexPageTextsEnum.TEXT_1;
 import static java.lang.System.setProperty;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -25,9 +26,8 @@ public class RefactoredHomework1 {
     @BeforeClass
     public void setUpPages() {
         setProperty("webdriver.chrome.driver", CHROME_DRIVER_PATH);
-        driver = new ChromeDriver();
+        PageFactory.initElements(driver, PageObjects.class);
         driver.manage().window().fullscreen();
-        pageObjects = PageFactory.initElements(driver, PageObjects.class);
     }
 
     @AfterClass
@@ -35,26 +35,36 @@ public class RefactoredHomework1 {
         driver.close();
     }
 
+    //1 Create a new test
     @Test
     public void userLoginAndContentChecks() {
+        //2 Open test site by URL
         driver.navigate().to("https://jdi-framework.github.io/tests");
+
+        //3 Assert Browser title
+        pageObjects.checkPageTitle(driver);
+
+
+        pageObjects.checkTextsUnderImages(TEXT_1);
+
+        pageObjects.checkTextsUnderImages(IndexPageTextsEnum.values());
+
+
+        //4 Perform login
         pageObjects.login("epam", "1234");
 
-//        Assert that user is logged in
+        //5 Assert that user is logged in
         assertTrue(pageObjects.profileName.isDisplayed());
         assertEquals(pageObjects.profileName.getText(), "PITER CHAILOVSKII");
 
-//        Assert Browser title
-        assertEquals(driver.getTitle(), "Index Page");
-
-//        Assert that there are 4 images on the Home Page and they are displayed
+        //6 Assert that there are 4 images on the Home Page and they are displayed
         List<WebElement> images = pageObjects.imagesOnHomePage;
         assertEquals(images.size(), 4);
         for (WebElement element : images) {
             assertTrue(element.isDisplayed());
         }
 
-//        Assert that there are 4 texts on the Home Page and check them by getting texts
+        //7 Assert that there are 4 texts on the Home Page and check them by getting texts
         List<WebElement> texts = pageObjects.textOnHomePage;
         assertEquals(texts.size(), 4);
         for (WebElement element : texts) {
@@ -66,7 +76,7 @@ public class RefactoredHomework1 {
         assertEquals(texts.get(3).getText(), "Already have good base\n" + "(about 20 internal and\n" +
                 "some external projects),\n" + "wish to get more…");
 
-//        Assert that there are the main header and the text below it on the Home Page
+        //8 Assert that there are the main header and the text below it on the Home Page
 
     }
 }

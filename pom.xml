@@ -29,6 +29,12 @@
             <artifactId>testng</artifactId>
             <version>RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>4.10</version>
+        </dependency>
+
     </dependencies>
 
     <build>

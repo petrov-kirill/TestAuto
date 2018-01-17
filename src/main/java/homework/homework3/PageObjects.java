@@ -1,11 +1,28 @@
 package homework.homework3;
 
+import com.codeborne.selenide.SelenideElement;
+import enums.IndexPageTextsEnum;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
+import static org.testng.Assert.assertEquals;
+
 public class PageObjects {
+
+    private WebDriver driver;
+
+//    public PageObjects(WebDriver driver) {
+//        PageFactory.initElements(driver, this);
+//        this.driver = driver;
+//    }
+
+    // selenide element
+    @FindBy(css = ".uui-profile-menu")
+    private SelenideElement profileMenuSelenide;
+
     @FindBy(css = ".uui-profile-menu")
     private WebElement profileMenu;
 
@@ -33,4 +50,17 @@ public class PageObjects {
         passwordField.sendKeys(password);
         loginButton.click();
     }
+
+    public void checkPageTitle(WebDriver driver) {
+        assertEquals(driver.getTitle(), " ");
+    }
+
+    public void checkTextsUnderImages() {
+
+    }
+
+    public void checkTextsUnderImages(IndexPageTextsEnum[] arr) {
+
+    }
+
 }

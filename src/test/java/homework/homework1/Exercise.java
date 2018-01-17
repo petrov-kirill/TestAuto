@@ -1,9 +1,13 @@
 package homework.homework1;
 
+import homework.homework3.PageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -14,44 +18,58 @@ import static org.testng.Assert.assertTrue;
 
 public class Exercise {
 
-//    Create a new test
+    private static final String CHROME_DRIVER_PATH = "windows-drivers/chromedriver.exe";
+    private WebDriver driver;
 
+
+    @BeforeClass
+    public void setUpPages() {
+        setProperty("webdriver.chrome.driver", CHROME_DRIVER_PATH);
+        driver = new ChromeDriver();
+        driver.manage().window().fullscreen();
+    }
+
+    @AfterClass
+    public void tearDown() {
+        driver.close();
+    }
+
+    //1 Create a new test
     @Test
     public void userLoginAndContentChecks() {
 
-//        Create driver
         setProperty("webdriver.chrome.driver", "windows-drivers/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 
-//        Open test site by URL
+        //2 Open test site by URL
         driver.navigate().to("https://jdi-framework.github.io/tests");
 
-//        Assert Browser title
+        //3 Assert Browser title
         assertEquals(driver.getTitle(), "Index Page");
 
-//        Perform login
+        //4 Perform login
         driver.findElement(By.cssSelector(".uui-profile-menu")).click();
         driver.findElement(By.id("Login")).sendKeys("epam");
         driver.findElement(By.id("Password")).sendKeys("1234");
         driver.findElement(By.cssSelector(".uui-button.dark-blue.btn-login")).click();
 
-//        Assert that user is logged in
+        //5 Assert that user is logged in
         WebElement profileName = driver.findElement(By.className("profile-photo"));
         assertTrue(profileName.isDisplayed());
         assertEquals(profileName.getText(), "PITER CHAILOVSKII");
 
-//        Assert Browser title
+        //6 Assert Browser title
         assertEquals(driver.getTitle(), "Index Page");
 
-//        Assert that there are 4 images on the Home Page and they are displayed
+        //7 Assert that there are 4 images on the Home Page and they are displayed
         List<WebElement> icons = driver.findElements(By.className("benefit-icon"));
         assertEquals(icons.size(), 4);
         for (WebElement element : icons) {
             assertTrue(element.isDisplayed());
         }
 
-//        Assert that there are 4 texts on the Home Page and check them by getting texts
+        //8 Assert that there are 4 texts on the Home Page and check them by getting texts
         List<WebElement> texts = driver.findElements(By.className("benefit-txt"));
         assertEquals(texts.size(), 4);
         for (WebElement element : texts) {
@@ -63,11 +81,9 @@ public class Exercise {
         assertEquals(texts.get(3).getText(), "Already have good base\n" + "(about 20 internal and\n" +
                 "some external projects),\n" + "wish to get more…");
 
-//        Assert that there are the main header and the text below it on the Home Page
+        //9 Assert that there are the main header and the text below it on the Home Page
         WebElement element = driver.findElement(By.className("main-content"));
         assertTrue(element.getText().contains("EPAM FRAMEWORK WISHES…"));
         assertTrue(element.getText().contains("LOREM IPSUM"));
-
-        driver.close();
     }
 }
