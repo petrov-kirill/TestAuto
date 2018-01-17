@@ -1,4 +1,4 @@
-package homework.lesson1;
+package homework.homework1;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
+import static java.lang.System.setProperty;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -19,6 +20,7 @@ public class Exercise {
     public void userLoginAndContentChecks() {
 
 //        Create driver
+        setProperty("webdriver.chrome.driver", "windows-drivers/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 
@@ -35,9 +37,9 @@ public class Exercise {
         driver.findElement(By.cssSelector(".uui-button.dark-blue.btn-login")).click();
 
 //        Assert that user is logged in
-        WebElement piter_chailovskii = driver.findElement(By.className("profile-photo"));
-        assertTrue(piter_chailovskii.isDisplayed());
-        assertEquals(piter_chailovskii.getText(), "PITER CHAILOVSKII");
+        WebElement profileName = driver.findElement(By.className("profile-photo"));
+        assertTrue(profileName.isDisplayed());
+        assertEquals(profileName.getText(), "PITER CHAILOVSKII");
 
 //        Assert Browser title
         assertEquals(driver.getTitle(), "Index Page");

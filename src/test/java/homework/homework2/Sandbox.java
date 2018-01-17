@@ -1,17 +1,22 @@
-package homework.lesson2;
+package homework.homework2;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
 import static java.lang.System.setProperty;
+import static org.testng.Assert.assertTrue;
 
 public class Sandbox {
 
-    private static final String GECKO_PATH = "linux-drivers/geckodriver";
+    private static final String LINUX_GECKO_DRIVER_PATH = "linux-drivers/geckodriver";
+    private static final String WINDOWS_CHROME_DRIVER_PATH = "windows-drivers/chromedriver.exe";
+    private static final String WINDOWS_GECKO_DRIVER_PATH = "windows-drivers/geckodriver.exe";
     private WebDriver gecko;
     private JavascriptExecutor js;
     private JavascriptExecutor js2;
@@ -20,7 +25,8 @@ public class Sandbox {
     @BeforeSuite
     public void suiteSetUp() {
         System.out.println("Are you ready?!");
-        setProperty("webdriver.gecko.driver", GECKO_PATH);
+        setProperty("webdriver.gecko.driver", WINDOWS_GECKO_DRIVER_PATH);
+        setProperty("webdriver.chrome.driver", WINDOWS_CHROME_DRIVER_PATH);
 //        gecko = new FirefoxDriver();
 
 
@@ -33,14 +39,14 @@ public class Sandbox {
 
     @BeforeMethod()
     public void setUp() {
-//        setProperty("webdriver.gecko.driver", GECKO_PATH);
-//        gecko.manage().window().maximize();
+        gecko = new FirefoxDriver();
+        js = (JavascriptExecutor) gecko;
     }
 
     @AfterMethod()
     public void tearDown(ITestResult result) {
         System.out.println(result.getName());
-//        gecko.close();
+        gecko.close();
     }
 
 
@@ -49,8 +55,8 @@ public class Sandbox {
         return new Object[][]{{"user1", "pass1"}, {"user2", "pass2"}, {"user3", "pass3"}};
     }
 
-    @Ignore
-    @Test()
+
+    @Test
     public void testWithoutDP() throws InterruptedException {
         gecko.navigate().to("http://www.epam.com");
         gecko.navigate().to("http://www.google.com");
@@ -114,6 +120,29 @@ public class Sandbox {
         gecko.close();
     }
 
+
+    @Test(threadPoolSize = 1, dataProvider = "provide")
+    public void test3(String text) {
+        setProperty("webdriver.chrome.driver", WINDOWS_CHROME_DRIVER_PATH);
+        WebDriver chromeDriver = new ChromeDriver();
+        chromeDriver.navigate().to("https://jdi-framework.github.io/tests/index.htm");
+        WebElement element = chromeDriver.findElement(By.className("main-content"));
+
+        assertTrue(element.isDisplayed());
+        assertTrue(element.getText().contains(text));
+//        chromeDriver.close();
+    }
+
+    @DataProvider(parallel = true)
+    public Object[][] provide() {
+        return new Object[][]{
+                {"To include good practices\n" + "and ideas from successful\n" + "EPAM projec"},
+                {"To be flexible and\n" + "customizable"},
+                {"To be multiplatform"},
+                {"Already have good base\n" + "(about 20 internal and\n" +
+                        "some external projects),\n" + "wish to get more…"}
+        };
+    }
 
 //
 //    @Test()

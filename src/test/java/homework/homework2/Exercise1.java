@@ -1,10 +1,13 @@
-package homework.lesson2;
+package homework.homework2;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 import static java.lang.System.setProperty;
 import static org.testng.Assert.assertTrue;
@@ -16,18 +19,32 @@ public class Exercise1 {
     The test must be developed with help of the DataProvider.
     Run it in the parallel by methods through the configuring parameters in a @DataProvider annotation.*/
 
-    private static final String CHROME_DRIVER_PATH = "linux-drivers/chromedriver";
+    private static final String WINDOWS_GECKO_DRIVER_PATH = "windows-drivers/geckodriver.exe";
+    private static final String WINDOWS_CHROME_DRIVER_PATH = "windows-drivers/chromedriver.exe";
+
+    private WebDriver chromeDriver;
+
+    @BeforeClass
+    public void setUp() {
+        setProperty("webdriver.chrome.driver", WINDOWS_CHROME_DRIVER_PATH);
+        chromeDriver = new ChromeDriver();
+    }
+
+    @AfterClass
+    public void tearDown() {
+        chromeDriver.close();
+    }
 
     @Test(threadPoolSize = 2, dataProvider = "provide")
     public void test(String text) {
-        setProperty("webdriver.chrome.driver", CHROME_DRIVER_PATH);
-        WebDriver driver = new ChromeDriver();
-        driver.navigate().to("https://jdi-framework.github.io/tests/index.htm");
-        WebElement element = driver.findElement(By.className("main-content"));
+        setProperty("webdriver.chrome.driver", WINDOWS_CHROME_DRIVER_PATH);
+        WebDriver chromeDriver = new ChromeDriver();
+        chromeDriver.navigate().to("https://jdi-framework.github.io/tests/index.htm");
+        WebElement element = chromeDriver.findElement(By.className("main-content"));
 
         assertTrue(element.isDisplayed());
         assertTrue(element.getText().contains(text));
-        driver.close();
+        chromeDriver.close();
     }
 
     @DataProvider(parallel = true)

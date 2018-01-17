@@ -7,10 +7,10 @@ public class IndexPage {
     @FindBy(css = ".uui-profile-menu .dropdown-toggle")
     private WebElement loginFormButton;
 
-    @FindBy(css = "Login")
+    @FindBy(css = "#Login")
     private WebElement loginInput;
 
-    @FindBy(css = "Password")
+    @FindBy(css = "#Password")
     private WebElement passwordInput;
 
     @FindBy(css = ".form-horizontal [type='submit']")
@@ -18,10 +18,8 @@ public class IndexPage {
 
     public void login(String name, String password) {
         loginFormButton.click();
-
         loginInput.sendKeys(name);
         passwordInput.sendKeys(password);
         submitButton.click();
-
     }
 }

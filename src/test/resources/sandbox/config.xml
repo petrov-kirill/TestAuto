@@ -3,13 +3,13 @@
 <suite name="SimpleSuite"  >
     <test name="ClassTest" thread-count="2" parallel="methods">
         <classes>
-            <class  name="homework.lesson2.Sandbox"/>
+            <class  name="homework.homework2.Sandbox"/>
         </classes>
     </test>
 
     <!--<test name="PackageTest">-->
         <!--<packages>-->
-            <!--<package name="homework.lesson2>-->
+            <!--<package name="homework.homework2k2>-->
         <!--</packages>-->
     <!--</test>-->
 
@@ -21,7 +21,7 @@
             <!--</run>-->
         <!--</groups>-->
         <!--<packages>-->
-            <!--<package name="homework.lesson2>-->
+            <!--<package name="homework.homework2k2>-->
         <!--</packages>-->
         <!--<classes>-->
             <!--<class name="homework.lesson2andbox"/>-->
