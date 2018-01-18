@@ -11,8 +11,7 @@ import static java.lang.System.setProperty;
 
 public class RefactoredHomework1 {
 
-    private static final String CHROME_DRIVER_PATH =
-            "C:\\Users\\Kirill_Petrov\\IdeaProjects\\TestAuto\\src\\test\\resources\\windows-drivers\\chromedriver.exe";
+    private static final String CHROME_DRIVER_PATH = "src\\test\\resources\\windows-drivers\\chromedriver.exe";
     private static final String USER_LOGIN_NAME = "epam";
     private static final String PASSWORD = "1234";
     private static final String SITE_UNDER_TEST_URL = "https://jdi-framework.github.io/tests";

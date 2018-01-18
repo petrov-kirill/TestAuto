@@ -16,8 +16,7 @@ import static org.testng.Assert.assertTrue;
 
 public class Exercise {
 
-    private static final String CHROME_DRIVER_PATH =
-            "C:\\Users\\Kirill_Petrov\\IdeaProjects\\TestAuto\\src\\test\\resources\\windows-drivers\\chromedriver.exe";
+    private static final String CHROME_DRIVER_PATH = "src\\test\\resources\\windows-drivers\\chromedriver.exe";
 
     private WebDriver driver;
 

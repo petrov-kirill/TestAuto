@@ -15,8 +15,7 @@ public class Exercise3 {
         Each annotation can contain the only 1 instruction.
         2. Create a dedicated TestNG config for particular test.*/
 
-    private static final String CHROME_DRIVER_PATH =
-            "C:\\Users\\Kirill_Petrov\\IdeaProjects\\TestAuto\\src\\test\\resources\\windows-drivers\\chromedriver.exe";
+    private static final String CHROME_DRIVER_PATH = "src\\test\\resources\\windows-drivers\\chromedriver.exe";
     private WebDriver driver;
 
     @BeforeSuite

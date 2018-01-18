@@ -19,8 +19,7 @@ public class Exercise1 {
     The test must be developed with help of the DataProvider.
     Run it in the parallel by methods through the configuring parameters in a @DataProvider annotation.*/
 
-    private static final String CHROME_DRIVER_PATH =
-            "C:\\Users\\Kirill_Petrov\\IdeaProjects\\TestAuto\\src\\test\\resources\\windows-drivers\\chromedriver.exe";
+    private static final String CHROME_DRIVER_PATH = "src\\test\\resources\\windows-drivers\\chromedriver.exe";
 
     private WebDriver chromeDriver;
 
