@@ -46,7 +46,7 @@ public class Exercise {
         driver.findElement(By.cssSelector(".uui-profile-menu")).click();
         driver.findElement(By.id("Login")).sendKeys("epam");
         driver.findElement(By.id("Password")).sendKeys("1234");
-        driver.findElement(By.cssSelector(".uui-button.dark-blue.btn-login")).click(); //TODO think about it!
+        driver.findElement(By.cssSelector(".btn-login")).click();
 
         //5 Assert that user is logged in
         WebElement profileName = driver.findElement(By.className("profile-photo"));

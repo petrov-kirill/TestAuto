@@ -1,6 +1,6 @@
 package classwork.lesson3;
 
-import lesson3.pageObjects.IndexPage;
+import classwork.lesson3.pageobject.IndexPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;

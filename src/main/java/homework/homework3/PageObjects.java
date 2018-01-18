@@ -1,28 +1,19 @@
 package homework.homework3;
 
-import com.codeborne.selenide.SelenideElement;
 import enums.IndexPageTextsEnum;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-import static enums.IndexPageTextsEnum.TEXT_1;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class PageObjects {
 
     private WebDriver driver;
-
-//    public PageObjects(WebDriver driver) {
-//        PageFactory.initElements(driver, this);
-//        this.driver = driver;
-//    }
-
-    // selenide element
-    @FindBy(css = ".uui-profile-menu")
-    private SelenideElement profileMenuSelenide;
 
     @FindBy(css = ".uui-profile-menu")
     private WebElement profileMenu;
@@ -33,17 +24,25 @@ public class PageObjects {
     @FindBy(css = "#Password")
     private WebElement passwordField;
 
-    @FindBy(css = ".uui-button.dark-blue.btn-login") // think about it later!
+    @FindBy(css = ".btn-login")
     private WebElement loginButton;
 
     @FindBy(css = ".profile-photo")
-    WebElement profileName;
+    private WebElement profileName;
 
     @FindBy(css = ".benefit-icon")
-    List<WebElement> imagesOnHomePage;
+    private List<WebElement> imagesOnHomePage;
 
     @FindBy(css = ".benefit-txt")
-    List<WebElement> textOnHomePage;
+    private List<WebElement> textOnHomePage;
+
+    @FindBy(css = ".main-content")
+    private WebElement mainHeader;
+
+    PageObjects(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+        this.driver = driver;
+    }
 
     public void login(String username, String password) {
         profileMenu.click();
@@ -53,15 +52,30 @@ public class PageObjects {
     }
 
     public void checkPageTitle(WebDriver driver) {
-        assertEquals(driver.getTitle(), " ");
-    }
-
-    public void checkTextUnderImages() {
-//        assertEquals(TEXT_1);
+        assertEquals(driver.getTitle(), "Index Page");
     }
 
     public void checkTextsUnderImages(IndexPageTextsEnum[] arr) {
-
+        for (int i = 0; i < arr.length; i++) {
+            assertEquals(textOnHomePage.get(i).getText().replaceAll("\\r\\n|\\r|\\n", " "), arr[i].text);
+        }
     }
 
+    public void checkIfUserLoggedIn(String text) {
+        assertTrue(profileName.isDisplayed());
+        assertEquals(profileName.getText(), text);
+    }
+
+    public void checkAmountOfImagesOnPage() {
+        assertEquals(imagesOnHomePage.size(), 4);
+        for (WebElement element : imagesOnHomePage) {
+            assertTrue(element.isDisplayed());
+        }
+    }
+
+    public void checkMainHeaderOnPage(String... strings) {
+        for (String string : strings) {
+            assertTrue(mainHeader.getText().contains(string));
+        }
+    }
 }

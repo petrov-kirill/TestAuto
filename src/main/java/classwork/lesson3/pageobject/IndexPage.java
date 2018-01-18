@@ -1,4 +1,4 @@
-package lesson3.pageObjects;
+package classwork.lesson3.pageobject;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
