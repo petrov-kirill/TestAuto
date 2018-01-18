@@ -1,11 +1,9 @@
 package homework.homework1;
 
-import homework.homework3.PageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -18,9 +16,10 @@ import static org.testng.Assert.assertTrue;
 
 public class Exercise {
 
-    private static final String CHROME_DRIVER_PATH = "windows-drivers/chromedriver.exe";
-    private WebDriver driver;
+    private static final String CHROME_DRIVER_PATH =
+            "C:\\Users\\Kirill_Petrov\\IdeaProjects\\TestAuto\\src\\test\\resources\\windows-drivers\\chromedriver.exe";
 
+    private WebDriver driver;
 
     @BeforeClass
     public void setUpPages() {
@@ -37,11 +36,6 @@ public class Exercise {
     //1 Create a new test
     @Test
     public void userLoginAndContentChecks() {
-
-        setProperty("webdriver.chrome.driver", "windows-drivers/chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-
         //2 Open test site by URL
         driver.navigate().to("https://jdi-framework.github.io/tests");
 
@@ -52,7 +46,7 @@ public class Exercise {
         driver.findElement(By.cssSelector(".uui-profile-menu")).click();
         driver.findElement(By.id("Login")).sendKeys("epam");
         driver.findElement(By.id("Password")).sendKeys("1234");
-        driver.findElement(By.cssSelector(".uui-button.dark-blue.btn-login")).click();
+        driver.findElement(By.cssSelector(".uui-button.dark-blue.btn-login")).click(); //TODO think about it!
 
         //5 Assert that user is logged in
         WebElement profileName = driver.findElement(By.className("profile-photo"));
@@ -75,11 +69,11 @@ public class Exercise {
         for (WebElement element : texts) {
             assertTrue(element.isDisplayed());
         }
-        assertEquals(texts.get(0).getText(), "To include good practices\n" + "and ideas from successful\n" + "EPAM projec");
-        assertEquals(texts.get(1).getText(), "To be flexible and\n" + "customizable");
+        assertEquals(texts.get(0).getText(), "To include good practices\nand ideas from successful\nEPAM projec");
+        assertEquals(texts.get(1).getText(), "To be flexible and\ncustomizable");
         assertEquals(texts.get(2).getText(), "To be multiplatform");
-        assertEquals(texts.get(3).getText(), "Already have good base\n" + "(about 20 internal and\n" +
-                "some external projects),\n" + "wish to get more…");
+        assertEquals(texts.get(3).getText(), "Already have good base\n(about 20 internal and\n" +
+                "some external projects),\nwish to get more…");
 
         //9 Assert that there are the main header and the text below it on the Home Page
         WebElement element = driver.findElement(By.className("main-content"));

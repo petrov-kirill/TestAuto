@@ -19,14 +19,14 @@ public class Exercise1 {
     The test must be developed with help of the DataProvider.
     Run it in the parallel by methods through the configuring parameters in a @DataProvider annotation.*/
 
-    private static final String WINDOWS_GECKO_DRIVER_PATH = "windows-drivers/geckodriver.exe";
-    private static final String WINDOWS_CHROME_DRIVER_PATH = "windows-drivers/chromedriver.exe";
+    private static final String CHROME_DRIVER_PATH =
+            "C:\\Users\\Kirill_Petrov\\IdeaProjects\\TestAuto\\src\\test\\resources\\windows-drivers\\chromedriver.exe";
 
     private WebDriver chromeDriver;
 
     @BeforeClass
     public void setUp() {
-        setProperty("webdriver.chrome.driver", WINDOWS_CHROME_DRIVER_PATH);
+        setProperty("webdriver.chrome.driver", CHROME_DRIVER_PATH);
         chromeDriver = new ChromeDriver();
     }
 
@@ -37,7 +37,7 @@ public class Exercise1 {
 
     @Test(threadPoolSize = 2, dataProvider = "provide")
     public void test(String text) {
-        setProperty("webdriver.chrome.driver", WINDOWS_CHROME_DRIVER_PATH);
+        setProperty("webdriver.chrome.driver", CHROME_DRIVER_PATH);
         WebDriver chromeDriver = new ChromeDriver();
         chromeDriver.navigate().to("https://jdi-framework.github.io/tests/index.htm");
         WebElement element = chromeDriver.findElement(By.className("main-content"));
@@ -50,11 +50,11 @@ public class Exercise1 {
     @DataProvider(parallel = true)
     public Object[][] provide() {
         return new Object[][]{
-                {"To include good practices\n" + "and ideas from successful\n" + "EPAM projec"},
-                {"To be flexible and\n" + "customizable"},
+                {"To include good practices\nand ideas from successful\nEPAM projec"},
+                {"To be flexible and\ncustomizable"},
                 {"To be multiplatform"},
-                {"Already have good base\n" + "(about 20 internal and\n" +
-                        "some external projects),\n" + "wish to get more…"}
+                {"Already have good base\n(about 20 internal and\n" +
+                        "some external projects),\nwish to get more…"}
         };
     }
 }

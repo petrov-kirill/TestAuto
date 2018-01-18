@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
+import static enums.IndexPageTextsEnum.TEXT_1;
 import static org.testng.Assert.assertEquals;
 
 public class PageObjects {
@@ -55,8 +56,8 @@ public class PageObjects {
         assertEquals(driver.getTitle(), " ");
     }
 
-    public void checkTextsUnderImages() {
-
+    public void checkTextUnderImages() {
+//        assertEquals(TEXT_1);
     }
 
     public void checkTextsUnderImages(IndexPageTextsEnum[] arr) {

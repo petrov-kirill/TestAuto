@@ -44,11 +44,9 @@ public class RefactoredHomework1 {
         //3 Assert Browser title
         pageObjects.checkPageTitle(driver);
 
-
-        pageObjects.checkTextsUnderImages(TEXT_1);
+        pageObjects.checkTextUnderImages();
 
         pageObjects.checkTextsUnderImages(IndexPageTextsEnum.values());
-
 
         //4 Perform login
         pageObjects.login("epam", "1234");
