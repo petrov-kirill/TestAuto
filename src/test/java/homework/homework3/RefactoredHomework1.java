@@ -15,6 +15,7 @@ public class RefactoredHomework1 {
     private static final String USER_LOGIN_NAME = "epam";
     private static final String PASSWORD = "1234";
     private static final String SITE_UNDER_TEST_URL = "https://jdi-framework.github.io/tests";
+    private static final String FULL_NAME = "PITER CHAILOVSKII";
 
     private WebDriver driver;
     private PageObjects pageObjects;
@@ -45,7 +46,7 @@ public class RefactoredHomework1 {
         pageObjects.login(USER_LOGIN_NAME, PASSWORD);
 
         //5 Assert that user is logged in
-        pageObjects.checkIfUserLoggedIn("PITER CHAILOVSKII");
+        pageObjects.checkIfUserLoggedIn(FULL_NAME);
 
         //6 Assert Browser title
         pageObjects.checkPageTitle(driver);
