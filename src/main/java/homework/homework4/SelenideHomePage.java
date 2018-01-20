@@ -2,16 +2,14 @@ package homework.homework4;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.WebDriver;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
+import static org.testng.Assert.assertTrue;
 
-public class SelenidePageObjects {
+public class SelenideHomePage {
 
-    private WebDriver driver;
     private SelenideElement profileMenu = $(".uui-profile-menu");
     private SelenideElement loginField = $("#Login");
     private SelenideElement passwordField = $("#Password");
@@ -20,6 +18,11 @@ public class SelenidePageObjects {
     private ElementsCollection imagesOnHomePage = $$(".benefit-icon");
     private ElementsCollection textsOnHomePage = $$(".benefit-txt");
     private SelenideElement mainContent = $(".main-content");
+    private SelenideElement serviceHeaderCaret = $("a[class='dropdown-toggle'][href='page1.htm'] .caret");
+    private ElementsCollection serviceHeaderOptions = $$("ul[class='dropdown-menu']");
+    private SelenideElement serviceLeftCaret = $(".sub-menu a div");
+    private ElementsCollection serviceLeftOptions = $$(".sub-menu .sub");
+
 
     public void performLogin(String username, String password) {
         profileMenu.click();
@@ -45,6 +48,29 @@ public class SelenidePageObjects {
         for (String s : strings) {
             mainContent.shouldHave(text(s));
         }
+    }
 
+    public void checkHeaderServiceMenu(String[] options) {
+        serviceHeaderCaret.click();
+        for (String option : options) {
+            serviceHeaderOptions.get(0).should(exist);
+            assertTrue(serviceHeaderOptions.get(0).getText().contains(option));
+            //todo ...is it possible to write this assertion only with help of should? think!
+        }
+    }
+
+    public void checkLeftServiceMenu(String[] options) {
+        serviceLeftCaret.click();
+        for (String option : options) {
+            serviceLeftOptions.get(0).should(exist);
+            assertTrue(serviceLeftOptions.get(0).getText().contains(option));
+            //todo ...is it possible to write this assertion only with help of should? think!
+        }
+    }
+
+    public void openDifferentElementPage() {
+        serviceHeaderCaret.click();
+        $(".dropdown-menu [href='page8.htm']").click();
     }
 }
+
