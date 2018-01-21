@@ -1,25 +1,21 @@
 package homework.homework4;
 
 import com.codeborne.selenide.Selenide;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static java.lang.System.setProperty;
 
-/**
- * Work in progress
- */
 public class Exercise {
 
-    //    todo ... Create dedicated class for shared constants!
     private static final String GECKO_DRIVER_PATH = "src\\test\\resources\\windows-drivers\\geckodriver.exe";
     private static final String SITE_UNDER_TEST = "https://jdi-framework.github.io/tests/index.htm";
     private static final String USER_LOGIN_NAME = "epam";
     private static final String PASSWORD = "1234";
     private static final String FULL_NAME = "PITER CHAILOVSKII";
+    private static final String RADIO_BUTTON_NAME = "Selen";
+    private static final String COLOR = "Yellow";
 
-    private WebDriver driver;
     private SelenideHomePage homePage;
     private SelenideDifferentPage differentPage;
     private String[] serviceHeaderOptions = {"SUPPORT", "DATES", "COMPLEX TABLE", "SIMPLE TABLE", "TABLE WITH PAGES",
@@ -36,9 +32,11 @@ public class Exercise {
 
     //1 Create a new test in a new Java class, specify test name accordingly checking functionality
     @Test
-    public void renameMeLater() {   // todo ...don't forget to come up with a proper name for test!!!
+    public void testCaseForLoginAndElementsAssertions() {
+
         //2 Open test site by URL
         Selenide.open(SITE_UNDER_TEST);
+
         //3 Perform login
         homePage.performLogin(USER_LOGIN_NAME, PASSWORD);
 
@@ -61,11 +59,21 @@ public class Exercise {
         differentPage.checkIfInterfaceContainsAllNeededElements();
 
         //10 Select and assert checkboxes
+        differentPage.selectAndAssertCheckboxes("Water", "Wind");
 
         //11 Select radio
+        differentPage.selectRadioButton(RADIO_BUTTON_NAME);
+
         //12 Select in dropdown
+        differentPage.selectInDropdown(COLOR);
+
         //13 Check in logs section selected values and status (true|false)
+        differentPage.checkLogsForSelectedValues("Water", "Wind", RADIO_BUTTON_NAME, COLOR);
+
         //14 Unselect and assert checkboxes
+        differentPage.checkUnselectedCheckboxes("Water", "Wind");
+
         //15 Check in logs section unselected values and status (true|false)
+        differentPage.checkLogsForUnselectedValues("false", "Water", "Wind");
     }
 }

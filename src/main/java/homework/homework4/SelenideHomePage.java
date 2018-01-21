@@ -3,10 +3,10 @@ package homework.homework4;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
-import static org.testng.Assert.assertTrue;
 
 public class SelenideHomePage {
 
@@ -18,10 +18,11 @@ public class SelenideHomePage {
     private ElementsCollection imagesOnHomePage = $$(".benefit-icon");
     private ElementsCollection textsOnHomePage = $$(".benefit-txt");
     private SelenideElement mainContent = $(".main-content");
-    private SelenideElement serviceHeaderCaret = $("a[class='dropdown-toggle'][href='page1.htm'] .caret");
-    private ElementsCollection serviceHeaderOptions = $$("ul[class='dropdown-menu']");
+    private SelenideElement serviceHeaderCaret = $("a[class^='dropdown'][href^='page1'] .caret");
+    private ElementsCollection serviceHeaderOptions = $$(".dropdown-menu a");
     private SelenideElement serviceLeftCaret = $(".sub-menu a div");
-    private ElementsCollection serviceLeftOptions = $$(".sub-menu .sub");
+    private ElementsCollection serviceLeftOptions = $$(".sub p");
+    private SelenideElement differentElementsPage = $(".dropdown-menu [href^='page8']");
 
 
     public void performLogin(String username, String password) {
@@ -31,9 +32,9 @@ public class SelenideHomePage {
         loginButton.click();
     }
 
-    public void checkIfUserLoggedIn(String text) {
+    public void checkIfUserLoggedIn(String fullName) {
         profileName.shouldBe(visible);
-        profileName.shouldHave(text("PITER CHAILOVSKII"));
+        profileName.shouldHave(text(fullName));
     }
 
     public void checkIfPageContainsAllNeededElements(String... strings) {
@@ -52,25 +53,21 @@ public class SelenideHomePage {
 
     public void checkHeaderServiceMenu(String[] options) {
         serviceHeaderCaret.click();
-        for (String option : options) {
-            serviceHeaderOptions.get(0).should(exist);
-            assertTrue(serviceHeaderOptions.get(0).getText().contains(option));
-            //todo ...is it possible to write this assertion only with help of should? think!
+        for (int i = 0; i < serviceHeaderOptions.size(); i++) {
+            serviceHeaderOptions.get(i).shouldHave(text(options[i]));
         }
     }
 
     public void checkLeftServiceMenu(String[] options) {
         serviceLeftCaret.click();
-        for (String option : options) {
-            serviceLeftOptions.get(0).should(exist);
-            assertTrue(serviceLeftOptions.get(0).getText().contains(option));
-            //todo ...is it possible to write this assertion only with help of should? think!
+        for (int i = 0; i < serviceLeftOptions.size(); i++) {
+            serviceLeftOptions.get(i).shouldHave(text(options[i]));
         }
     }
 
     public void openDifferentElementPage() {
         serviceHeaderCaret.click();
-        $(".dropdown-menu [href='page8.htm']").click();
+        differentElementsPage.click();
     }
 }
 
