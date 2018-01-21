@@ -8,14 +8,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static java.lang.System.setProperty;
+import static utils.Constants.*;
 
 public class RefactoredHomework1 {
-
-    private static final String CHROME_DRIVER_PATH = "src\\test\\resources\\windows-drivers\\chromedriver.exe";
-    private static final String USER_LOGIN_NAME = "epam";
-    private static final String PASSWORD = "1234";
-    private static final String SITE_UNDER_TEST_URL = "https://jdi-framework.github.io/tests";
-    private static final String FULL_NAME = "PITER CHAILOVSKII";
 
     private WebDriver driver;
     private PageObjects pageObjects;
@@ -37,7 +32,7 @@ public class RefactoredHomework1 {
     @Test
     public void userLoginAndContentChecks() {
         //2 Open test site by SITE_UNDER_TEST_URL
-        driver.navigate().to(SITE_UNDER_TEST_URL);
+        driver.navigate().to(MAIN_PAGE_URL);
 
         //3 Assert Browser title
         pageObjects.checkPageTitle(driver);

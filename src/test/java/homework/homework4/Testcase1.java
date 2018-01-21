@@ -1,23 +1,19 @@
 package homework.homework4;
 
-import com.codeborne.selenide.Selenide;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import static com.codeborne.selenide.Selenide.open;
 import static java.lang.System.setProperty;
+import static utils.Constants.*;
 
-public class Exercise {
+public class Testcase1 {
 
-    private static final String GECKO_DRIVER_PATH = "src\\test\\resources\\windows-drivers\\geckodriver.exe";
-    private static final String SITE_UNDER_TEST = "https://jdi-framework.github.io/tests/index.htm";
-    private static final String USER_LOGIN_NAME = "epam";
-    private static final String PASSWORD = "1234";
-    private static final String FULL_NAME = "PITER CHAILOVSKII";
     private static final String RADIO_BUTTON_NAME = "Selen";
     private static final String COLOR = "Yellow";
 
-    private SelenideHomePage homePage;
-    private SelenideDifferentPage differentPage;
+    private HomePage homePage;
+    private DifferentElementsPage differentPage;
     private String[] serviceHeaderOptions = {"SUPPORT", "DATES", "COMPLEX TABLE", "SIMPLE TABLE", "TABLE WITH PAGES",
             "DIFFERENT ELEMENTS"};
     private String[] serviceLeftOptions = {"Support", "Dates", "Complex Table", "Simple Table", "Table with pages",
@@ -26,8 +22,8 @@ public class Exercise {
     @BeforeClass
     public void setUp() {
         setProperty("webdriver.gecko.driver", GECKO_DRIVER_PATH);
-        homePage = new SelenideHomePage();
-        differentPage = new SelenideDifferentPage();
+        homePage = new HomePage();
+        differentPage = new DifferentElementsPage();
     }
 
     //1 Create a new test in a new Java class, specify test name accordingly checking functionality
@@ -35,7 +31,7 @@ public class Exercise {
     public void testCaseForLoginAndElementsAssertions() {
 
         //2 Open test site by URL
-        Selenide.open(SITE_UNDER_TEST);
+        open(MAIN_PAGE_URL);
 
         //3 Perform login
         homePage.performLogin(USER_LOGIN_NAME, PASSWORD);

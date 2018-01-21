@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
-public class SelenideHomePage {
+public class HomePage {
 
     private SelenideElement profileMenu = $(".uui-profile-menu");
     private SelenideElement loginField = $("#Login");
@@ -23,6 +23,7 @@ public class SelenideHomePage {
     private SelenideElement serviceLeftCaret = $(".sub-menu a div");
     private ElementsCollection serviceLeftOptions = $$(".sub p");
     private SelenideElement differentElementsPage = $(".dropdown-menu [href^='page8']");
+    private SelenideElement datesPage = $(".dropdown-menu a[href^=page4]");
 
 
     public void performLogin(String username, String password) {
