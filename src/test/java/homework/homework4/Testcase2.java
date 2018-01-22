@@ -14,7 +14,7 @@ public class Testcase2 {
 
     @BeforeClass
     public void setUp() {
-        setProperty("webdriver.chrome.driver", GECKO_DRIVER_PATH);
+        setProperty("webdriver.gecko.driver", GECKO_DRIVER_PATH);
         homePage = new HomePage();
         datesPage = new DatesPage();
     }
