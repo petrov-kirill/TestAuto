@@ -5,7 +5,8 @@ import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.page;
+import static enums.Colors.YELLOW;
+import static enums.RadioButtons.SELEN;
 
 public class DifferentElementsPage {
 
@@ -32,19 +33,6 @@ public class DifferentElementsPage {
 
     @FindBy(css = ".logs")
     private ElementsCollection logsSection;
-
-//    private ElementsCollection checkboxes = $$(".support-title + .checkbox-row label ");
-//    private ElementsCollection radioButtons = $$(".checkbox-row ~ .checkbox-row label");
-//    private ElementsCollection colorsDropDown = $$(".colors .uui-form-element option");
-//    private SelenideElement defaultButton = $("button[class='uui-button']");
-//    private SelenideElement button = $("input[class='uui-button']");
-//    private SelenideElement leftSection = $("#mCSB_1");
-//    private SelenideElement rightSection = $("#mCSB_2");
-//    private ElementsCollection logsSection = $$(".logs");
-
-    DifferentElementsPage() {
-        page(DifferentElementsPage.class);
-    }
 
     public void checkIfInterfaceContainsAllNeededElements() {
         checkboxes.shouldHaveSize(4);
@@ -76,18 +64,18 @@ public class DifferentElementsPage {
         }
     }
 
-    public void selectRadioButton(String radioButtonName) {
+    public void selectRadioButton() {
         for (SelenideElement se : radioButtons) {
-            if (se.getText().equals(radioButtonName)) {
+            if (se.getText().equals(SELEN.label)) {
                 se.$("input").setSelected(true);
                 se.$("input").shouldBe(checked);
             }
         }
     }
 
-    public void selectInDropdown(String color) {
+    public void selectInDropdown() {
         for (SelenideElement se : colorsDropDown) {
-            if (se.getText().equals(color)) {
+            if (se.getText().equals(YELLOW.color)) {
                 se.setSelected(true);
                 se.shouldBe(selected);
             }
@@ -113,10 +101,10 @@ public class DifferentElementsPage {
         }
     }
 
-    public void checkLogsForUnselectedValues(String condition, String... values) {
+    public void checkLogsForUnselectedValues(String... values) {
         for (SelenideElement se : logsSection) {
             for (String s : values) {
-                se.shouldHave(text(s), text(condition));
+                se.shouldHave(text(s), text("false"));
             }
         }
     }

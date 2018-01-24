@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.open;
 import static java.lang.System.setProperty;
-import static literals.Constants.*;
 import static literals.Paths.GECKO_DRIVER_PATH;
 import static literals.Urls.DATES_PAGE_URL;
 import static literals.Urls.MAIN_PAGE_URL;
@@ -30,10 +29,10 @@ public class DatesPageSliderTest {
         open(MAIN_PAGE_URL);
 
         //3 Perform login
-        homePage.performLogin(USER_LOGIN_NAME, PASSWORD);
+        homePage.performLogin();
 
         //4 Assert User name in the left-top side of screen that user is loggined
-        homePage.checkIfUserLoggedIn(FULL_NAME);
+        homePage.checkIfUserLoggedIn();
 
         //5 Open Service -> Dates
         //TODO ...WRONG!!!

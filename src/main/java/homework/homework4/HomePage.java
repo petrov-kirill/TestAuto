@@ -1,13 +1,14 @@
 package homework.homework4;
 
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import enums.ServiceOptions;
 import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.open;
+import static literals.Constants.*;
 import static literals.Urls.MAIN_PAGE_URL;
 
 public class HomePage {
@@ -74,23 +75,23 @@ public class HomePage {
 //        page(HomePage.class);
 //    }
 
-    public void openPage(String mainPageUrl) {
-        open(MAIN_PAGE_URL, HomePage.class);
+    public void openPage() {
+        Selenide.open(MAIN_PAGE_URL);
     }
 
-    public void performLogin(String username, String password) {
+    public void performLogin() {
         profileMenu.click();
-        loginField.sendKeys(username);
-        passwordField.sendKeys(password);
+        loginField.sendKeys(USER_LOGIN_NAME);
+        passwordField.sendKeys(PASSWORD);
         loginButton.click();
     }
 
-    public void checkIfUserLoggedIn(String fullName) {
+    public void checkIfUserLoggedIn() {
         profileName.shouldBe(visible);
-        profileName.shouldHave(text(fullName));
+        profileName.shouldHave(text(FULL_NAME));
     }
 
-    public void checkIfPageContainsAllNeededElements(String... strings) {
+    public void checkIfPageContainsAllNeededElements() {
         for (SelenideElement se : imagesOnHomePage) {
             se.shouldBe(visible);
         }
@@ -99,20 +100,24 @@ public class HomePage {
             se.shouldBe(visible);
         }
         textsOnHomePage.shouldHaveSize(4);
-        for (String s : strings) {
-            mainContent.shouldHave(text(s));
-        }
+        mainContent.shouldHave(text(MAIN_HEADER));
+        mainContent.shouldHave(text(MAIN_PAGE_TEXT_BELOW_HEADER));
+//        for (String s : strings) {
+//            mainContent.shouldHave(text(s));
+//        }
     }
 
-    public void checkHeaderServiceMenu(ServiceOptions... menuItems) {
+    public void checkHeaderServiceMenu() {
         serviceHeaderCaret.click();
-        for (int i = 0; i < menuItems.length; i++) {
-            serviceHeaderOptions.get(i).shouldHave(text(menuItems[i].option));
+        ServiceOptions[] options = ServiceOptions.values();
+        for (int i = 0; i < serviceHeaderOptions.size(); i++) {
+            serviceHeaderOptions.get(i).shouldHave(text(options[i].option));
         }
     }
 
-    public void checkLeftServiceMenu(ServiceOptions... options) {
+    public void checkLeftServiceMenu() {
         serviceLeftCaret.click();
+        ServiceOptions[] options = ServiceOptions.values();
         for (int i = 0; i < serviceLeftOptions.size(); i++) {
             serviceLeftOptions.get(i).shouldHave(text(options[i].option));
         }
