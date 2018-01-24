@@ -11,7 +11,7 @@ import static enums.RadioButtons.SELEN;
 import static java.lang.System.setProperty;
 import static literals.Paths.GECKO_DRIVER_PATH;
 
-public class ServiceMenusAndDifferentElementsPageTest {
+public class ServiceMenusDifferentElementsPageTest {
 
     private HomePage homePage;
     private DifferentElementsPage differentPage;

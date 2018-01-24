@@ -37,7 +37,7 @@ public class HomePage {
     @FindBy(css = ".main-content")
     private SelenideElement mainContent;
 
-    @FindBy(css = "a[class^='dropdown'][href^='page1'] .caret")
+    @FindBy(css = ".dropdown [href*='1'] .caret")
     private SelenideElement serviceHeaderCaret;
 
     @FindBy(css = ".dropdown-menu a")
@@ -49,31 +49,11 @@ public class HomePage {
     @FindBy(css = ".sub p")
     private ElementsCollection serviceLeftOptions;
 
-    @FindBy(css = ".dropdown-menu [href^='page8']")
+    @FindBy(css = ".dropdown-menu [href*='8']")
     private SelenideElement differentElementsPage;
 
-    @FindBy(css = ".dropdown-menu a[href^=page4]")
+    @FindBy(css = ".dropdown-menu a[href*=4]")
     private SelenideElement datesPage;
-
-//    private SelenideElement profileMenu = $(".uui-profile-menu");
-//    private SelenideElement loginField = $("#Login");
-//    private SelenideElement passwordField = $("#Password");
-//    private SelenideElement loginButton = $(".btn-login");
-//    private SelenideElement profileName = $(".profile-photo");
-//    private ElementsCollection imagesOnHomePage = $$(".benefit-icon");
-//    private ElementsCollection textsOnHomePage = $$(".benefit-txt");
-//    private SelenideElement mainContent = $(".main-content");
-//    private SelenideElement serviceHeaderCaret = $("a[class^='dropdown'][href^='page1'] .caret");
-//    private ElementsCollection serviceHeaderOptions = $$(".dropdown-menu a");
-//    private SelenideElement serviceLeftCaret = $(".sub-menu a div");
-//    private ElementsCollection serviceLeftOptions = $$(".sub p");
-//    private SelenideElement differentElementsPage = $(".dropdown-menu [href^='page8']");
-//    private SelenideElement datesPage = $(".dropdown-menu a[href^=page4]");
-
-
-//    HomePage() {
-//        page(HomePage.class);
-//    }
 
     public void openPage() {
         Selenide.open(MAIN_PAGE_URL);
@@ -102,9 +82,6 @@ public class HomePage {
         textsOnHomePage.shouldHaveSize(4);
         mainContent.shouldHave(text(MAIN_HEADER));
         mainContent.shouldHave(text(MAIN_PAGE_TEXT_BELOW_HEADER));
-//        for (String s : strings) {
-//            mainContent.shouldHave(text(s));
-//        }
     }
 
     public void checkHeaderServiceMenu() {
