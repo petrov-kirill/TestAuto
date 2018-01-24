@@ -5,9 +5,12 @@ import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.open;
 import static java.lang.System.setProperty;
-import static utils.Constants.*;
+import static literals.Constants.*;
+import static literals.Paths.GECKO_DRIVER_PATH;
+import static literals.Urls.DATES_PAGE_URL;
+import static literals.Urls.MAIN_PAGE_URL;
 
-public class Testcase2 {
+public class DatesPageSliderTest {
 
     private HomePage homePage;
     private DatesPage datesPage;
@@ -33,6 +36,7 @@ public class Testcase2 {
         homePage.checkIfUserLoggedIn(FULL_NAME);
 
         //5 Open Service -> Dates
+        //TODO ...WRONG!!!
         open(DATES_PAGE_URL);
 
         //6 Using drag-and-drop set Range sliders

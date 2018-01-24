@@ -1,37 +1,46 @@
 package homework.homework4;
 
+import enums.ServiceOptions;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.page;
+import static enums.CheckBoxes.WATER;
+import static enums.CheckBoxes.WIND;
+import static enums.Colors.YELLOW;
+import static enums.RadioButtons.SELEN;
 import static java.lang.System.setProperty;
-import static utils.Constants.*;
+import static literals.Constants.*;
+import static literals.Paths.GECKO_DRIVER_PATH;
 
-public class Testcase1 {
+public class MainPageServiceMenusAndDifferentElementsPageTest {
 
     private static final String RADIO_BUTTON_NAME = "Selen";
     private static final String COLOR = "Yellow";
 
     private HomePage homePage;
     private DifferentElementsPage differentPage;
-    private String[] serviceHeaderOptions = {"SUPPORT", "DATES", "COMPLEX TABLE", "SIMPLE TABLE", "TABLE WITH PAGES",
-            "DIFFERENT ELEMENTS"};
-    private String[] serviceLeftOptions = {"Support", "Dates", "Complex Table", "Simple Table", "Table with pages",
-            "Different elements"};
+
+//    private String[] serviceHeaderOptions = {"SUPPORT", "DATES", "COMPLEX TABLE", "SIMPLE TABLE", "TABLE WITH PAGES",
+//            "DIFFERENT ELEMENTS"};
+//    private String[] serviceLeftOptions = {"Support", "Dates", "Complex Table", "Simple Table", "Table with pages",
+//            "Different elements"};
+
+    private ServiceOptions[] serviceOptions = ServiceOptions.values();
 
     @BeforeClass
     public void setUp() {
         setProperty("webdriver.gecko.driver", GECKO_DRIVER_PATH);
-        homePage = new HomePage();
-        differentPage = new DifferentElementsPage();
+        homePage = page(HomePage.class);
+        differentPage = page(DifferentElementsPage.class);
     }
 
     //1 Create a new test in a new Java class, specify test name accordingly checking functionality
     @Test
-    public void testCaseForLoginAndElementsAssertions() {
+    public void loginAndCheckingElementsTestcase() {
 
         //2 Open test site by URL
-        open(MAIN_PAGE_URL);
+        homePage.openPage();
 
         //3 Perform login
         homePage.performLogin(USER_LOGIN_NAME, PASSWORD);
@@ -40,13 +49,13 @@ public class Testcase1 {
         homePage.checkIfUserLoggedIn(FULL_NAME);
 
         //5 Check interface on Home page, it contains all needed elements.
-        homePage.checkIfPageContainsAllNeededElements("EPAM FRAMEWORK WISHES…", "LOREM IPSUM");
+        homePage.checkIfPageContainsAllNeededElements(MAIN_HEADER, MAIN_PAGE_TEXT_BELOW_HEADER);
 
         //6 Click on "Service" subcategory in the header and check that drop down contains options
-        homePage.checkHeaderServiceMenu(serviceHeaderOptions);
+        homePage.checkHeaderServiceMenu(ServiceOptions.values());
 
         //7 Click on Service subcategory in the left section and check that drop down contains options
-        homePage.checkLeftServiceMenu(serviceLeftOptions);
+        homePage.checkLeftServiceMenu(ServiceOptions.values());
 
         //8 Open through the header menu Service -> Different Elements Page
         homePage.openDifferentElementPage();
@@ -55,21 +64,21 @@ public class Testcase1 {
         differentPage.checkIfInterfaceContainsAllNeededElements();
 
         //10 Select and assert checkboxes
-        differentPage.selectAndAssertCheckboxes("Water", "Wind");
+        differentPage.selectAndAssertCheckboxes(WATER.label, WIND.label);
 
         //11 Select radio
-        differentPage.selectRadioButton(RADIO_BUTTON_NAME);
+        differentPage.selectRadioButton(SELEN.label);
 
         //12 Select in dropdown
-        differentPage.selectInDropdown(COLOR);
+        differentPage.selectInDropdown(YELLOW.color);
 
         //13 Check in logs section selected values and status (true|false)
-        differentPage.checkLogsForSelectedValues("Water", "Wind", RADIO_BUTTON_NAME, COLOR);
+        differentPage.checkLogsForSelectedValues(WATER.label, WIND.label, SELEN.label, YELLOW.color);
 
         //14 Unselect and assert checkboxes
-        differentPage.checkUnselectedCheckboxes("Water", "Wind");
+        differentPage.checkUnselectedCheckboxes(WATER.label, WIND.label);
 
         //15 Check in logs section unselected values and status (true|false)
-        differentPage.checkLogsForUnselectedValues("false", "Water", "Wind");
+        differentPage.checkLogsForUnselectedValues(WATER.label, WIND.label);
     }
 }

@@ -2,21 +2,49 @@ package homework.homework4;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.page;
 
 public class DifferentElementsPage {
 
-    private ElementsCollection checkboxes = $$(".support-title + .checkbox-row label ");
-    private ElementsCollection radioButtons = $$(".checkbox-row ~ .checkbox-row label");
-    private ElementsCollection colorsDropDown = $$(".colors .uui-form-element option");
-    private SelenideElement defaultButton = $("button[class='uui-button']");
-    private SelenideElement button = $("input[class='uui-button']");
-    private SelenideElement leftSection = $("#mCSB_1");
-    private SelenideElement rightSection = $("#mCSB_2");
-    private ElementsCollection logsSection = $$(".logs");
+    @FindBy(css = ".support-title + .checkbox-row label")
+    private ElementsCollection checkboxes;
+
+    @FindBy(css = ".checkbox-row ~.checkbox-row label")
+    private ElementsCollection radioButtons;
+
+    @FindBy(css = ".colors .uui-form-element option")
+    private ElementsCollection colorsDropDown;
+
+    @FindBy(css = "button[class='uui-button']")
+    private SelenideElement defaultButton;
+
+    @FindBy(css = "input[class='uui-button']")
+    private SelenideElement button;
+
+    @FindBy(css = "#mCSB_1")
+    private SelenideElement leftSection;
+
+    @FindBy(css = "#mCSB_2")
+    private SelenideElement rightSection;
+
+    @FindBy(css = ".logs")
+    private ElementsCollection logsSection;
+
+//    private ElementsCollection checkboxes = $$(".support-title + .checkbox-row label ");
+//    private ElementsCollection radioButtons = $$(".checkbox-row ~ .checkbox-row label");
+//    private ElementsCollection colorsDropDown = $$(".colors .uui-form-element option");
+//    private SelenideElement defaultButton = $("button[class='uui-button']");
+//    private SelenideElement button = $("input[class='uui-button']");
+//    private SelenideElement leftSection = $("#mCSB_1");
+//    private SelenideElement rightSection = $("#mCSB_2");
+//    private ElementsCollection logsSection = $$(".logs");
+
+    DifferentElementsPage() {
+        page(DifferentElementsPage.class);
+    }
 
     public void checkIfInterfaceContainsAllNeededElements() {
         checkboxes.shouldHaveSize(4);

@@ -44,6 +44,10 @@ public class PageObjects {
         this.driver = driver;
     }
 
+    public void open(String url) {
+        driver.navigate().to(url);
+    }
+
     public void login(String username, String password) {
         profileMenu.click();
         loginField.sendKeys(username);
@@ -77,5 +81,9 @@ public class PageObjects {
         for (String string : strings) {
             assertTrue(mainHeader.getText().contains(string));
         }
+    }
+
+    public void closeDriver() {
+        driver.close();
     }
 }
