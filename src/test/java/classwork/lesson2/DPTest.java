@@ -1,6 +1,7 @@
 package classwork.lesson2;
 
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 /**
@@ -13,6 +14,7 @@ public class DPTest {
         return new Object[][]{{1, "string1"},{2, "string2"}};
     }
 
+    @Ignore
     @Test(dataProvider = "dp")
     public void dpTest(int i, String s) {
         System.out.println("int: " + i + " " + "String: " + s);

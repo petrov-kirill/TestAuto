@@ -82,10 +82,11 @@ public class DifferentElementsPage {
         }
     }
 
-    public void checkLogsForSelectedValues(String... values) {
+    public void checkLogsForSelectedValues(String condition, String... values) {
         for (SelenideElement se : logsSection) {
             for (String s : values) {
-                se.shouldHave(text(s));
+                //TODO condition
+                se.shouldHave(text(s), text(condition));
             }
         }
     }
@@ -101,10 +102,10 @@ public class DifferentElementsPage {
         }
     }
 
-    public void checkLogsForUnselectedValues(String... values) {
+    public void checkLogsForUnselectedValues(String condition, String... values) {
         for (SelenideElement se : logsSection) {
             for (String s : values) {
-                se.shouldHave(text(s), text("false"));
+                se.shouldHave(text(s), text(condition));
             }
         }
     }

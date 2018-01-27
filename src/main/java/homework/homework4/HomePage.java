@@ -8,7 +8,9 @@ import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static literals.Constants.*;
+import static enums.UserCreds.FULL_NAME;
+import static literals.Constants.MAIN_HEADER;
+import static literals.Constants.MAIN_PAGE_TEXT_BELOW_HEADER;
 import static literals.Urls.MAIN_PAGE_URL;
 
 public class HomePage {
@@ -59,16 +61,18 @@ public class HomePage {
         Selenide.open(MAIN_PAGE_URL);
     }
 
-    public void performLogin() {
-        profileMenu.click();
-        loginField.sendKeys(USER_LOGIN_NAME);
-        passwordField.sendKeys(PASSWORD);
-        loginButton.click();
+    public void performLogin(String login, String password) {
+        if (!profileName.getText().contains(FULL_NAME.text)) {
+            profileMenu.click();
+            loginField.sendKeys(login);
+            passwordField.sendKeys(password);
+            loginButton.click();
+        }
     }
 
-    public void checkIfUserLoggedIn() {
+    public void checkIfUserLoggedIn(String fullName) {
         profileName.shouldBe(visible);
-        profileName.shouldHave(text(FULL_NAME));
+        profileName.shouldHave(text(fullName));
     }
 
     public void checkIfPageContainsAllNeededElements() {

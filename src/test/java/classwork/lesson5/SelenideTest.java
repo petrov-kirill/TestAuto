@@ -1,10 +1,10 @@
 package classwork.lesson5;
 
-import org.testng.annotations.Listeners;
+import base.BaseSelenide;
 
-@Listeners(AllureAttachmentListener.class)
+//@Listeners(AllureAttachmentListener.class)
 //@Features({"Selenide Test Suite"})
 //@Stories({""})
-public class SelenideTest {
+public class SelenideTest extends BaseSelenide {
 
 }

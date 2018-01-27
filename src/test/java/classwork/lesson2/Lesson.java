@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import java.lang.reflect.Method;
@@ -28,6 +29,7 @@ public class Lesson {
         driver = new ChromeDriver();
     }
 
+    @Ignore
     @Test
     public void simpleTest() {
         driver.navigate().to("https://www.epam.com");

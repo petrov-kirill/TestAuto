@@ -2,6 +2,7 @@ package classwork.lesson2;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
@@ -11,6 +12,7 @@ import static org.testng.Assert.assertEquals;
  */
 public class SeleniumTest {
 
+    @Ignore
     @Test(groups = {"smoke"})
     public void test1() {
         WebDriver driver = new ChromeDriver();

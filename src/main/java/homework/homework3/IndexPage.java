@@ -4,14 +4,14 @@ import enums.IndexPageTextsEnum;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
+import static literals.Urls.MAIN_PAGE_URL;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class PageObjects {
+public class IndexPage {
 
     private WebDriver driver;
 
@@ -39,13 +39,12 @@ public class PageObjects {
     @FindBy(css = ".main-content")
     private WebElement mainHeader;
 
-    PageObjects(WebDriver driver) {
-        PageFactory.initElements(driver, this);
+    public IndexPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public void open(String url) {
-        driver.navigate().to(url);
+    public void openPage() {
+        driver.navigate().to(MAIN_PAGE_URL);
     }
 
     public void login(String username, String password) {
@@ -55,13 +54,13 @@ public class PageObjects {
         loginButton.click();
     }
 
-    public void checkPageTitle(WebDriver driver) {
+    public void checkPageTitle() {
         assertEquals(driver.getTitle(), "Index Page");
     }
 
     public void checkTextsUnderImages(IndexPageTextsEnum[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            assertEquals(textOnHomePage.get(i).getText().replaceAll("\\r\\n|\\r|\\n", " "), arr[i].text);
+        for (int i = 0; i < textOnHomePage.size(); i++) {
+            assertEquals(textOnHomePage.get(i).getText().replaceAll("\\n", " "), arr[i].text);
         }
     }
 
@@ -81,9 +80,5 @@ public class PageObjects {
         for (String string : strings) {
             assertTrue(mainHeader.getText().contains(string));
         }
-    }
-
-    public void closeDriver() {
-        driver.close();
     }
 }

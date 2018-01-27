@@ -8,6 +8,7 @@ import static enums.CheckBoxes.WATER;
 import static enums.CheckBoxes.WIND;
 import static enums.Colors.YELLOW;
 import static enums.RadioButtons.SELEN;
+import static enums.UserCreds.*;
 import static java.lang.System.setProperty;
 import static literals.Paths.GECKO_DRIVER_PATH;
 
@@ -31,10 +32,10 @@ public class ServiceMenusDifferentElementsPageTest {
         homePage.openPage();
 
         //3 Perform login
-        homePage.performLogin();
+        homePage.performLogin(LOGIN.text, PASSWORD.text);
 
         //4 Assert User name in the left-top side of screen that user is logged in
-        homePage.checkIfUserLoggedIn();
+        homePage.checkIfUserLoggedIn(FULL_NAME.text);
 
         //5 Check interface on Home page, it contains all needed elements.
         homePage.checkIfPageContainsAllNeededElements();
@@ -61,12 +62,12 @@ public class ServiceMenusDifferentElementsPageTest {
         differentPage.selectInDropdown();
 
         //13 Check in logs section selected values and status (true|false)
-        differentPage.checkLogsForSelectedValues(WATER.label, WIND.label, SELEN.label, YELLOW.color);
+        differentPage.checkLogsForSelectedValues("true", WATER.label, WIND.label, SELEN.label, YELLOW.color);
 
         //14 Unselect and assert checkboxes
         differentPage.checkUnselectedCheckboxes(WATER.label, WIND.label);
 
         //15 Check in logs section unselected values and status (true|false)
-        differentPage.checkLogsForUnselectedValues(WATER.label, WIND.label);
+        differentPage.checkLogsForUnselectedValues("false", WATER.label, WIND.label);
     }
 }

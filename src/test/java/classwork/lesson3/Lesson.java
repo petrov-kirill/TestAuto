@@ -6,6 +6,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import static java.lang.System.setProperty;
@@ -28,6 +29,7 @@ public class Lesson {
         driver.close();
     }
 
+    @Ignore
     @Test
     public void test() {
         driver.navigate().to("http://jdi-framework.github.io/tests");

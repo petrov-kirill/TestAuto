@@ -1,9 +1,6 @@
 package literals;
 
 public class Constants {
-    public static final String USER_LOGIN_NAME = "epam";
-    public static final String PASSWORD = "1234";
-    public static final String FULL_NAME = "PITER CHAILOVSKII";
     public static final String MAIN_HEADER = "EPAM FRAMEWORK WISHES…";
     public static final String MAIN_PAGE_TEXT_BELOW_HEADER = "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT," +
             " SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, " +

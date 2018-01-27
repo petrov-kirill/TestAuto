@@ -4,6 +4,7 @@ import base.BaseSelenide;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -17,6 +18,7 @@ public class SelenideDemo extends BaseSelenide {
         close();
     }
 
+    @Ignore
     @Test
     public void test1() {
         open("https://www.epam.com");
@@ -29,6 +31,7 @@ public class SelenideDemo extends BaseSelenide {
         menuButton.should(Condition.visible);
     }
 
+    @Ignore
     @Test
     public void test2() {
         open("https://www.epam.com");
@@ -41,6 +44,7 @@ public class SelenideDemo extends BaseSelenide {
         menuButton.should(Condition.visible);
     }
 
+    @Ignore
     @Test
     public void test3() {
         open("https://www.epam.com");
