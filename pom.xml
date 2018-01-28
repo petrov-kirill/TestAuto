@@ -10,6 +10,7 @@
 
     <properties>
         <aspectj.version>1.8.10</aspectj.version>
+        <!--<allure.version>2.0-BETA3</allure.version>-->
     </properties>
 
     <dependencies>
@@ -29,13 +30,17 @@
             <artifactId>selenide</artifactId>
             <version>4.10</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
+        <!--<dependency>-->
+        <!--<groupId>io.qameta.allure</groupId>-->
+        <!--<artifactId>allure-testng</artifactId>-->
+        <!--<version>${allure.version}</version>-->
+        <!--<scope>test</scope>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-testng</artifactId>
-            <version>2.0-BETA3</version>
+            <artifactId>allure-java-commons</artifactId>
+            <version>RELEASE</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -48,7 +53,7 @@
 
                     <configuration>
                         <suiteXmlFiles>
-                            <suiteXmlFile>src\test\resources\homework4\testng.xml</suiteXmlFile>
+                            <suiteXmlFile>test\resources\homework4\testng.xml</suiteXmlFile>
                         </suiteXmlFiles>
                     </configuration>
                 </plugin>
@@ -72,5 +77,4 @@
             </plugins>
         </pluginManagement>
     </build>
-
 </project>

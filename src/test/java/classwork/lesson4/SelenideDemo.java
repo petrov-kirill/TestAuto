@@ -13,12 +13,14 @@ import static org.testng.Assert.assertEquals;
 
 public class SelenideDemo extends BaseSelenide {
 
+
+
     @AfterMethod
     public void tearDown() {
         close();
     }
 
-    @Ignore
+//    @Ignore
     @Test
     public void test1() {
         open("https://www.epam.com");

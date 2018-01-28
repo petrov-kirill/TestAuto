@@ -4,6 +4,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import enums.ServiceOptions;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Condition.text;
@@ -13,7 +14,7 @@ import static literals.Constants.MAIN_HEADER;
 import static literals.Constants.MAIN_PAGE_TEXT_BELOW_HEADER;
 import static literals.Urls.MAIN_PAGE_URL;
 
-public class HomePage {
+public class IndexPage {
 
     @FindBy(css = ".uui-profile-menu")
     public SelenideElement profileMenu;
@@ -57,10 +58,12 @@ public class HomePage {
     @FindBy(css = ".dropdown-menu a[href*=4]")
     private SelenideElement datesPage;
 
+    @Step("Open Index page")
     public void openPage() {
         Selenide.open(MAIN_PAGE_URL);
     }
 
+    @Step("Performing login")
     public void performLogin(String login, String password) {
         if (!profileName.getText().contains(FULL_NAME.text)) {
             profileMenu.click();
@@ -70,11 +73,13 @@ public class HomePage {
         }
     }
 
+    @Step("Checking if user is logged in")
     public void checkIfUserLoggedIn(String fullName) {
         profileName.shouldBe(visible);
         profileName.shouldHave(text(fullName));
     }
 
+    @Step("Checking if page contains all needed elements")
     public void checkIfPageContainsAllNeededElements() {
         for (SelenideElement se : imagesOnHomePage) {
             se.shouldBe(visible);
@@ -88,6 +93,7 @@ public class HomePage {
         mainContent.shouldHave(text(MAIN_PAGE_TEXT_BELOW_HEADER));
     }
 
+    @Step("Check if header service menu contains all options")
     public void checkHeaderServiceMenu() {
         serviceHeaderCaret.click();
         ServiceOptions[] options = ServiceOptions.values();
@@ -96,6 +102,7 @@ public class HomePage {
         }
     }
 
+    @Step("Check if left service menu contains all options")
     public void checkLeftServiceMenu() {
         serviceLeftCaret.click();
         ServiceOptions[] options = ServiceOptions.values();
@@ -104,6 +111,7 @@ public class HomePage {
         }
     }
 
+    @Step("Open Different Elements page")
     public void openDifferentElementPage() {
         serviceHeaderCaret.click();
         differentElementsPage.click();

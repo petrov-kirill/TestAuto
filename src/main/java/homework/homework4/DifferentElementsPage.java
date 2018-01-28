@@ -2,6 +2,7 @@ package homework.homework4;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Condition.*;
@@ -34,6 +35,7 @@ public class DifferentElementsPage {
     @FindBy(css = ".logs")
     private ElementsCollection logsSection;
 
+    @Step("Check if interface contains all needed elements")
     public void checkIfInterfaceContainsAllNeededElements() {
         checkboxes.shouldHaveSize(4);
         for (SelenideElement se : checkboxes) {
@@ -53,6 +55,7 @@ public class DifferentElementsPage {
         rightSection.should(exist);
     }
 
+    @Step("Select and assert specific checkboxes")
     public void selectAndAssertCheckboxes(String... checkboxNames) {
         for (SelenideElement se : checkboxes) {
             for (String s : checkboxNames) {
@@ -64,6 +67,7 @@ public class DifferentElementsPage {
         }
     }
 
+    @Step("Select specific radio button")
     public void selectRadioButton() {
         for (SelenideElement se : radioButtons) {
             if (se.getText().equals(SELEN.label)) {
@@ -73,6 +77,7 @@ public class DifferentElementsPage {
         }
     }
 
+    @Step("Select color in dropdown menu")
     public void selectInDropdown() {
         for (SelenideElement se : colorsDropDown) {
             if (se.getText().equals(YELLOW.color)) {
@@ -82,15 +87,16 @@ public class DifferentElementsPage {
         }
     }
 
+    @Step("Check logs for selected values and their condition")
     public void checkLogsForSelectedValues(String condition, String... values) {
         for (SelenideElement se : logsSection) {
             for (String s : values) {
-                //TODO condition
                 se.shouldHave(text(s), text(condition));
             }
         }
     }
 
+    @Step("Check unselected checkboxes")
     public void checkUnselectedCheckboxes(String... checkboxNames) {
         for (SelenideElement se : checkboxes) {
             for (String s : checkboxNames) {
@@ -102,6 +108,7 @@ public class DifferentElementsPage {
         }
     }
 
+    @Step("Check logs for unselected values and their condition")
     public void checkLogsForUnselectedValues(String condition, String... values) {
         for (SelenideElement se : logsSection) {
             for (String s : values) {

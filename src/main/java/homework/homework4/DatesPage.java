@@ -1,6 +1,7 @@
 package homework.homework4;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
@@ -22,12 +23,14 @@ public class DatesPage {
     @FindBy(css = ".dropdown [href*='1'] .caret")
     private SelenideElement serviceHeaderCaret;
 
+    @Step("Open Dates page")
     public void openDatesPage() {
         serviceHeaderCaret.click();
         datesOption.click();
     }
 
 
+    @Step("Drag and drop slider manipulations")
     public void sliderDragAndDrop(int leftSliderShift, int rightSliderShift) {
         setPosition(leftSlider, leftSliderShift);
         setPosition(rightSlider, rightSliderShift);

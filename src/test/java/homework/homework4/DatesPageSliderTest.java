@@ -10,19 +10,19 @@ import static literals.Paths.GECKO_DRIVER_PATH;
 
 public class DatesPageSliderTest {
 
-    private HomePage homePage;
+    private IndexPage homePage;
     private DatesPage datesPage;
 
     @BeforeMethod
     public void setUp() {
         setProperty("webdriver.gecko.driver", GECKO_DRIVER_PATH);
-        homePage = page(HomePage.class);
+        homePage = page(IndexPage.class);
         datesPage = page(DatesPage.class);
     }
 
     //1 Create a new test in a new Java class, specify test name accordingly checking functionality
     @Test
-    public void test() {
+    public void datesPageDragAndDropTest() {
 
         //2 Open test site by URL
         homePage.openPage();

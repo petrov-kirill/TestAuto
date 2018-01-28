@@ -14,13 +14,13 @@ import static literals.Paths.GECKO_DRIVER_PATH;
 
 public class ServiceMenusDifferentElementsPageTest {
 
-    private HomePage homePage;
+    private IndexPage indexPage;
     private DifferentElementsPage differentPage;
 
     @BeforeMethod
     public void setUp() {
         setProperty("webdriver.gecko.driver", GECKO_DRIVER_PATH);
-        homePage = page(HomePage.class);
+        indexPage = page(IndexPage.class);
         differentPage = page(DifferentElementsPage.class);
     }
 
@@ -29,25 +29,25 @@ public class ServiceMenusDifferentElementsPageTest {
     public void loginAndCheckingElementsTestcase() {
 
         //2 Open test site by URL
-        homePage.openPage();
+        indexPage.openPage();
 
         //3 Perform login
-        homePage.performLogin(LOGIN.text, PASSWORD.text);
+        indexPage.performLogin(LOGIN.text, PASSWORD.text);
 
         //4 Assert User name in the left-top side of screen that user is logged in
-        homePage.checkIfUserLoggedIn(FULL_NAME.text);
+        indexPage.checkIfUserLoggedIn(FULL_NAME.text);
 
         //5 Check interface on Home page, it contains all needed elements.
-        homePage.checkIfPageContainsAllNeededElements();
+        indexPage.checkIfPageContainsAllNeededElements();
 
         //6 Click on "Service" subcategory in the header and check that drop down contains options
-        homePage.checkHeaderServiceMenu();
+        indexPage.checkHeaderServiceMenu();
 
         //7 Click on Service subcategory in the left section and check that drop down contains options
-        homePage.checkLeftServiceMenu();
+        indexPage.checkLeftServiceMenu();
 
         //8 Open through the header menu Service -> Different Elements Page
-        homePage.openDifferentElementPage();
+        indexPage.openDifferentElementPage();
 
         //9 Check interface on Service page, it contains all needed elements.
         differentPage.checkIfInterfaceContainsAllNeededElements();

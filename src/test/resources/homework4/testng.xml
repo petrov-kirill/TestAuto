@@ -1,9 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Smoke tests" verbose="1" >
-    <test name="Smoke test 1">
-        <!--<classes>-->
-            <!--<class  name="homework.homework4.ServiceMenusDifferentElementsPageTest"/>-->
-        <!--</classes>-->
+<suite name="Suite hw 4" verbose="1" >
+    <test name="Test hw 4">
         <packages>
             <package name="homework.homework4"/>
         </packages>
