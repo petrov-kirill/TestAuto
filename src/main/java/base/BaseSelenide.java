@@ -13,8 +13,8 @@ public abstract class BaseSelenide {
     public void setUpSuite() {
         setProperty("webdriver.gecko.driver", GECKO_DRIVER_PATH);
         setProperty("webdriver.chrome.driver", CHROME_DRIVER_PATH);
-        Configuration.browser = "chrome";
-        Configuration.startMaximized = false;
+        Configuration.browser = "firefox";
+        Configuration.startMaximized = true;
         Configuration.timeout = 6000;
         Configuration.pollingInterval = 200;
         Configuration.collectionsPollingInterval = 300;

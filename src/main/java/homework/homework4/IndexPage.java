@@ -9,7 +9,6 @@ import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static enums.UserCreds.FULL_NAME;
 import static literals.Constants.MAIN_HEADER;
 import static literals.Constants.MAIN_PAGE_TEXT_BELOW_HEADER;
 import static literals.Urls.MAIN_PAGE_URL;
@@ -65,12 +64,10 @@ public class IndexPage {
 
     @Step("Performing login")
     public void performLogin(String login, String password) {
-        if (!profileName.getText().contains(FULL_NAME.text)) {
-            profileMenu.click();
-            loginField.sendKeys(login);
-            passwordField.sendKeys(password);
-            loginButton.click();
-        }
+        profileMenu.click();
+        loginField.sendKeys(login);
+        passwordField.sendKeys(password);
+        loginButton.click();
     }
 
     @Step("Checking if user is logged in")

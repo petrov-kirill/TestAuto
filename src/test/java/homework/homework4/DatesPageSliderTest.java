@@ -1,8 +1,10 @@
 package homework.homework4;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.page;
 import static enums.UserCreds.*;
 import static java.lang.System.setProperty;
@@ -10,14 +12,19 @@ import static literals.Paths.GECKO_DRIVER_PATH;
 
 public class DatesPageSliderTest {
 
-    private IndexPage homePage;
+    private IndexPage indexPage;
     private DatesPage datesPage;
 
     @BeforeMethod
     public void setUp() {
         setProperty("webdriver.gecko.driver", GECKO_DRIVER_PATH);
-        homePage = page(IndexPage.class);
+        indexPage = page(IndexPage.class);
         datesPage = page(DatesPage.class);
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        close();
     }
 
     //1 Create a new test in a new Java class, specify test name accordingly checking functionality
@@ -25,13 +32,13 @@ public class DatesPageSliderTest {
     public void datesPageDragAndDropTest() {
 
         //2 Open test site by URL
-        homePage.openPage();
+        indexPage.openPage();
 
         //3 Perform login
-        homePage.performLogin(LOGIN.text, PASSWORD.text);
+        indexPage.performLogin(LOGIN.text, PASSWORD.text);
 
         //4 Assert User name in the left-top side of screen that user is loggined
-        homePage.checkIfUserLoggedIn(FULL_NAME.text);
+        indexPage.checkIfUserLoggedIn(FULL_NAME.text);
 
         //5 Open Service -> Dates
         datesPage.openDatesPage();

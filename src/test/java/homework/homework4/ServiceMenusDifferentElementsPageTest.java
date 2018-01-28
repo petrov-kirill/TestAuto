@@ -1,8 +1,10 @@
 package homework.homework4;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.page;
 import static enums.CheckBoxes.WATER;
 import static enums.CheckBoxes.WIND;
@@ -22,6 +24,11 @@ public class ServiceMenusDifferentElementsPageTest {
         setProperty("webdriver.gecko.driver", GECKO_DRIVER_PATH);
         indexPage = page(IndexPage.class);
         differentPage = page(DifferentElementsPage.class);
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        close();
     }
 
     //1 Create a new test in a new Java class, specify test name accordingly checking functionality
