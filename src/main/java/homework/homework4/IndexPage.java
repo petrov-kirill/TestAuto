@@ -36,8 +36,14 @@ public class IndexPage {
     @FindBy(css = ".benefit-txt")
     private ElementsCollection textsOnHomePage;
 
-    @FindBy(css = ".main-content")
-    private SelenideElement mainContent;
+//    @FindBy(css = ".main-content")
+//    private SelenideElement mainContent;
+
+    @FindBy(css = ".main-txt")
+    private SelenideElement mainText;
+
+    @FindBy(css = ".main-title")
+    private SelenideElement mainTitle;
 
     @FindBy(css = ".dropdown [href*='1'] .caret")
     private SelenideElement serviceHeaderCaret;
@@ -86,8 +92,10 @@ public class IndexPage {
             se.shouldBe(visible);
         }
         textsOnHomePage.shouldHaveSize(4);
-        mainContent.shouldHave(text(MAIN_HEADER));
-        mainContent.shouldHave(text(MAIN_PAGE_TEXT_BELOW_HEADER));
+        mainTitle.shouldHave(text(MAIN_HEADER));
+        mainText.shouldHave(text(MAIN_PAGE_TEXT_BELOW_HEADER));
+//        mainContent.shouldHave(text(MAIN_HEADER));
+//        mainContent.shouldHave(text(MAIN_PAGE_TEXT_BELOW_HEADER));
     }
 
     @Step("Check if header service menu contains all options")
