@@ -12,6 +12,7 @@ import org.testng.annotations.*;
 import static java.lang.System.setProperty;
 import static org.testng.Assert.assertTrue;
 
+@Ignore
 public class Sandbox {
 
     private static final String LINUX_GECKO_DRIVER_PATH = "linux-drivers/geckodriver";

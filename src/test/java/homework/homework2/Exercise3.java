@@ -8,6 +8,7 @@ import static java.lang.System.currentTimeMillis;
 import static java.lang.System.setProperty;
 import static org.testng.Assert.assertEquals;
 
+@Ignore
 public class Exercise3 {
 
     /*  1. Use your first ‘SeleniumTest’ and refactor it in a such way,

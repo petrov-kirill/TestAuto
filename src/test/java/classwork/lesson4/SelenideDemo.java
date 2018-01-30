@@ -20,7 +20,7 @@ public class SelenideDemo extends BaseSelenide {
         close();
     }
 
-//    @Ignore
+    @Ignore
     @Test
     public void test1() {
         open("https://www.epam.com");

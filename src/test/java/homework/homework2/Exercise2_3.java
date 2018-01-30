@@ -1,7 +1,9 @@
 package homework.homework2;
 
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
+@Ignore
 public class Exercise2_3 {
 
 /*          1. Create 3 new test classes and place there from 2 up to 4 tests (copy your already existed tests).

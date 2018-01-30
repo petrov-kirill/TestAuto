@@ -1,8 +1,12 @@
 package classwork.lesson1;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -12,6 +16,7 @@ import static org.testng.Assert.assertEquals;
 
 public class Lesson {
 
+    @Ignore
     @Test
     public void test() {
         WebDriver driver = new FirefoxDriver();
@@ -20,6 +25,7 @@ public class Lesson {
         driver.close();
     }
 
+    @Ignore
     @Test
     public void test2() {
         setProperty("webdriver.chrome.driver", "C:/Users/Kirill_Petrov/Downloads/chromedriver.exe");
@@ -28,6 +34,7 @@ public class Lesson {
         driver.close();
     }
 
+    @Ignore
     @Test
     public void test3() {
         WebDriver driver = new ChromeDriver();
@@ -37,6 +44,7 @@ public class Lesson {
         driver.close();
     }
 
+    @Ignore
     @Test
     public void test4() {
         WebDriver driver = new FirefoxDriver();
@@ -51,6 +59,7 @@ public class Lesson {
         driver.findElement(By.partialLinkText("Contact"));
     }
 
+    @Ignore
     @Test
     public void test5() throws InterruptedException {
         setProperty("webdriver.gecko.driver", "/home/kp/IdeaProjects/TestAuto/linux-drivers/geckodriver");
