@@ -12,6 +12,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static literals.Constants.MAIN_HEADER;
 import static literals.Constants.MAIN_PAGE_TEXT_BELOW_HEADER;
 import static literals.Urls.MAIN_PAGE_URL;
+import static org.testng.Assert.assertTrue;
 
 public class IndexPage {
 
@@ -92,10 +93,8 @@ public class IndexPage {
             se.shouldBe(visible);
         }
         textsOnHomePage.shouldHaveSize(4);
-        mainTitle.shouldHave(text(MAIN_HEADER));
-        mainText.shouldHave(text(MAIN_PAGE_TEXT_BELOW_HEADER));
-//        mainContent.shouldHave(text(MAIN_HEADER));
-//        mainContent.shouldHave(text(MAIN_PAGE_TEXT_BELOW_HEADER));
+        assertTrue(mainTitle.getText().contains(MAIN_HEADER));
+        assertTrue(mainText.getText().contains(MAIN_PAGE_TEXT_BELOW_HEADER));
     }
 
     @Step("Check if header service menu contains all options")
