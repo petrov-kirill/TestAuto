@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite hw 4" verbose="1" >
+    <test name="Test hw 4">
+        <classes>
+            <class name="homework.homework4.ServiceMenusDifferentElementsPageTest"/>
+            <class name="homework.homework4.DatesPageSliderTest"/>
+        </classes>
+    </test>
+</suite>

@@ -6,6 +6,7 @@ import org.testng.annotations.*;
 
 import static java.lang.System.currentTimeMillis;
 import static java.lang.System.setProperty;
+import static literals.Paths.CHROME_DRIVER_PATH;
 import static org.testng.Assert.assertEquals;
 
 @Ignore
@@ -16,7 +17,6 @@ public class Exercise3 {
         Each annotation can contain the only 1 instruction.
         2. Create a dedicated TestNG config for particular test.*/
 
-    private static final String CHROME_DRIVER_PATH = "src\\test\\resources\\windows-drivers\\chromedriver.exe";
     private WebDriver driver;
 
     @BeforeSuite

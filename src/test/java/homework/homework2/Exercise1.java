@@ -10,6 +10,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static java.lang.System.setProperty;
+import static literals.Paths.CHROME_DRIVER_PATH;
 import static org.testng.Assert.assertTrue;
 
 public class Exercise1 {
@@ -18,8 +19,6 @@ public class Exercise1 {
     https://jdi-framework.github.io/tests/index.htm.
     The test must be developed with help of the DataProvider.
     Run it in the parallel by methods through the configuring parameters in a @DataProvider annotation.*/
-
-    private static final String CHROME_DRIVER_PATH = "src\\test\\resources\\windows-drivers\\chromedriver.exe";
 
     private WebDriver chromeDriver;
 

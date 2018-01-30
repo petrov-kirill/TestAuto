@@ -6,7 +6,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import static enums.UserCreds.*;
@@ -15,7 +14,6 @@ import static literals.Constants.MAIN_HEADER;
 import static literals.Constants.MAIN_PAGE_TEXT_BELOW_HEADER;
 import static literals.Paths.CHROME_DRIVER_PATH;
 
-@Ignore
 public class RefactoredHomework1 {
 
     private WebDriver driver;

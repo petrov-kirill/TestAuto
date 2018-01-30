@@ -44,7 +44,7 @@ public class DatesPageSliderTest {
         datesPage.openDatesPage();
 
         //6 Using drag-and-drop set Range sliders (left - 0, right - 100)
-        datesPage.sliderDragAndDrop(0,100);
+        datesPage.sliderDragAndDrop(0, 100);
 
         //7 Using drag-and-drop set Range sliders (left - 0, right - 0)
         datesPage.sliderDragAndDrop(0, 0);
