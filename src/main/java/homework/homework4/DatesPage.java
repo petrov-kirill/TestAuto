@@ -1,9 +1,9 @@
 package homework.homework4;
 
 import com.codeborne.selenide.SelenideElement;
-import io.qameta.allure.Step;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import ru.yandex.qatools.allure.annotations.Step;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
@@ -32,8 +32,13 @@ public class DatesPage {
 
     @Step("Drag and drop slider manipulations")
     public void sliderDragAndDrop(int leftSliderShift, int rightSliderShift) {
-        setPosition(leftSlider, leftSliderShift);
-        setPosition(rightSlider, rightSliderShift);
+        if (leftSliderShift == 100) {
+            setPosition(rightSlider, rightSliderShift);
+            setPosition(leftSlider, leftSliderShift);
+        } else {
+            setPosition(leftSlider, leftSliderShift);
+            setPosition(rightSlider, rightSliderShift);
+        }
 
         assertEquals(getPosition(rightSlider), rightSliderShift);
         assertEquals(getPosition(leftSlider), leftSliderShift);
@@ -47,7 +52,7 @@ public class DatesPage {
             Actions actions = new Actions(getWebDriver());
             actions.dragAndDropBy(element, Math.round(horizontalOffset), 0).perform();
 
-            while(getPosition(element) != position) {
+            while (getPosition(element) != position) {
                 int delta = 1;
                 int stepWithDelta = Math.round(step) + delta;
                 actions.dragAndDropBy(element, horizontalOffset > 0 ? stepWithDelta : -stepWithDelta, 0)
