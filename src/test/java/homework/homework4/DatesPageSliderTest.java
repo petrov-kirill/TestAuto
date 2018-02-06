@@ -1,7 +1,9 @@
 package homework.homework4;
 
+import listeners.AllureAttachmentListener;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.close;
@@ -10,6 +12,7 @@ import static enums.UserCreds.*;
 import static java.lang.System.setProperty;
 import static literals.Paths.GECKO_DRIVER_PATH;
 
+@Listeners(AllureAttachmentListener.class)
 public class DatesPageSliderTest {
 
     private IndexPage indexPage;
