@@ -69,7 +69,7 @@ public class ServiceMenusDifferentElementsPageTest {
         differentPage.selectInDropdown();
 
         //13 Check in logs section selected values and status (true|false)
-        differentPage.checkLogsForSelectedValues("false", WATER.label, WIND.label, SELEN.label, YELLOW.color);
+        differentPage.checkLogsForSelectedValues("true", WATER.label, WIND.label, SELEN.label, YELLOW.color);
 
         //14 Unselect and assert checkboxes
         differentPage.checkUnselectedCheckboxes(WATER.label, WIND.label);
